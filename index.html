@@ -1,0 +1,728 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sri Aditya Degree College - Eluru One Town</title>
+  <style>
+    :root {
+      --primary: #2563eb;
+      --primary-dark: #1d4ed8;
+      --secondary: #64748b;
+      --accent: #f59e0b;
+      --success: #10b981;
+      --white: #ffffff;
+      --light: #f8fafc;
+      --gray-100: #f1f5f9;
+      --gray-200: #e2e8f0;
+      --gray-800: #1e293b;
+      --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+      --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+      --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+      --border: #e5e7eb;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      line-height: 1.6;
+      color: var(--gray-800);
+      background: var(--light);
+    }
+
+    /* Clean Navbar */
+    .navbar {
+      position: sticky;
+      top: 0;
+      background: var(--white);
+      backdrop-filter: blur(10px);
+      z-index: 40;
+      border-bottom: 1px solid var(--border);
+      padding: 1rem 0;
+    }
+    .nav-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 2rem;
+    }
+    .logo-section {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+    .logo-img {
+      width: 40px;
+      height: 40px;
+      border-radius: 0.5rem;
+      object-fit: cover;
+      border: 2px solid var(--primary);
+      box-shadow: var(--shadow-md);
+    }
+    .logo-text {
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: var(--primary);
+    }
+    .nav-links {
+      display: flex;
+      list-style: none;
+      gap: 2rem;
+      align-items: center;
+    }
+    .nav-links a {
+      text-decoration: none;
+      color: var(--gray-800);
+      font-weight: 500;
+      padding: 0.5rem 1rem;
+      border-radius: 0.5rem;
+      transition: all 0.2s;
+    }
+    .nav-links a:hover {
+      background: var(--gray-100);
+      color: var(--primary);
+    }
+    .cta-nav {
+      background: var(--primary);
+      color: var(--white) !important;
+      padding: 0.75rem 1.5rem !important;
+      border-radius: 0.75rem;
+      font-weight: 600;
+    }
+
+    /* Hero Section */
+    .hero {
+      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+      color: var(--white);
+      padding: 6rem 2rem 4rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(255,255,255,0.2);
+      backdrop-filter: blur(10px);
+      padding: 0.5rem 1rem;
+      border-radius: 9999px;
+      font-size: 0.875rem;
+      font-weight: 600;
+      margin-bottom: 2rem;
+    }
+    .hero h1 {
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      font-weight: 800;
+      margin-bottom: 1rem;
+      line-height: 1.1;
+    }
+    .hero-subtitle {
+      font-size: 1.25rem;
+      opacity: 0.95;
+      margin-bottom: 3rem;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .hero-stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 2rem;
+      margin-top: 3rem;
+      padding-top: 3rem;
+      border-top: 1px solid rgba(255,255,255,0.2);
+    }
+    .stat {
+      text-align: center;
+    }
+    .stat-number {
+      font-size: 2.5rem;
+      font-weight: 800;
+      color: var(--accent);
+    }
+
+    /* Sections */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+    .section {
+      padding: 6rem 0;
+    }
+    .section h2 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      text-align: center;
+      margin-bottom: 4rem;
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    /* Cards Grid */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 2rem;
+    }
+    .card {
+      background: var(--white);
+      border-radius: 1rem;
+      padding: 2.5rem;
+      box-shadow: var(--shadow-md);
+      border: 1px solid var(--gray-100);
+      transition: all 0.3s ease;
+    }
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-lg);
+    }
+    .card-icon {
+      width: 64px;
+      height: 64px;
+      border-radius: 0.75rem;
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      color: var(--white);
+      margin-bottom: 1.5rem;
+    }
+    .card h3 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      color: var(--gray-800);
+    }
+
+    /* Gallery */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+      gap: 1.5rem;
+    }
+    .gallery-item {
+      position: relative;
+      border-radius: 1rem;
+      overflow: hidden;
+      height: 500px;
+      box-shadow: var(--shadow-md);
+    }
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.4s ease;
+    }
+    .gallery-item:hover img {
+      transform: scale(1.05);
+    }
+    .gallery-overlay {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: linear-gradient(transparent, rgba(0,0,0,0.8));
+      color: var(--white);
+      padding: 1.5rem 1rem 1rem;
+    }
+
+    /* Form */
+    .form-container {
+      background: var(--white);
+      border-radius: 1rem;
+      padding: 3rem;
+      box-shadow: var(--shadow-lg);
+      max-width: 600px;
+      margin: 0 auto;
+      position: relative;
+    }
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+    .form-group label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: 600;
+      color: var(--gray-800);
+      font-size: 0.875rem;
+    }
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      padding: 0.875rem 1rem;
+      border: 2px solid var(--gray-200);
+      border-radius: 0.5rem;
+      font-size: 1rem;
+      transition: all 0.2s;
+      background: var(--white);
+    }
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgb(37 99 235 / 0.1);
+    }
+    .form-group input:invalid,
+    .form-group select:invalid {
+      border-color: #ef4444;
+    }
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+    .btn {
+      padding: 1rem 2rem;
+      border: none;
+      border-radius: 0.75rem;
+      font-weight: 600;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: all 0.2s;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .btn-primary {
+      background: var(--primary);
+      color: var(--white);
+    }
+    .btn-primary:hover:not(:disabled) {
+      background: var(--primary-dark);
+      transform: translateY(-1px);
+    }
+    .btn-primary:disabled {
+      background: var(--gray-200);
+      color: var(--gray-500);
+      cursor: not-allowed;
+      transform: none;
+    }
+    .btn-success {
+      background: var(--success);
+      color: var(--white);
+      width: 100%;
+    }
+    .error-message {
+      color: #ef4444;
+      font-size: 0.875rem;
+      margin-top: 0.25rem;
+      display: none;
+    }
+
+    /* SUCCESS MESSAGE - ON SAME PAGE */
+    .success-message {
+      display: none;
+      background: linear-gradient(135deg, var(--success) 0%, #059669 100%);
+      color: var(--white);
+      padding: 2rem;
+      border-radius: 1rem;
+      text-align: center;
+      margin-bottom: 2rem;
+      animation: slideDown 0.5s ease-out;
+      box-shadow: var(--shadow-lg);
+    }
+    .success-message.show {
+      display: block;
+    }
+    @keyframes slideDown {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .success-icon {
+      font-size: 4rem;
+      margin-bottom: 1rem;
+      animation: bounce 2s infinite;
+    }
+    @keyframes bounce {
+      0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+      40% { transform: translateY(-15px); }
+      60% { transform: translateY(-8px); }
+    }
+    .success-details {
+      background: rgba(255,255,255,0.2);
+      padding: 1.5rem;
+      border-radius: 0.75rem;
+      margin-top: 1.5rem;
+      text-align: left;
+      backdrop-filter: blur(10px);
+    }
+    .detail-row {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 0.75rem;
+      font-size: 0.95rem;
+    }
+
+    /* Hide form when success */
+    .form-success .form-container form {
+      display: none;
+    }
+    .form-success .success-message {
+      display: block;
+    }
+
+    /* Contact */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+    .contact-card {
+      background: var(--white);
+      padding: 2.5rem;
+      border-radius: 1rem;
+      box-shadow: var(--shadow-md);
+      text-align: center;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .hero { padding: 4rem 1rem 3rem; }
+      .container { padding: 0 1rem; }
+      .section { padding: 4rem 0; }
+      .form-row { grid-template-columns: 1fr; }
+      .hero-stats { grid-template-columns: 1fr; }
+      .logo-img { width: 36px; height: 36px; }
+      .detail-row { flex-direction: column; gap: 0.25rem; text-align: left; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <div class="logo-section">
+        <img src="https://tse2.mm.bing.net/th/id/OIP.US2BFwCmWdXT5qo40QSONAAAAA?cb=ucfimg2&pid=ImgDet&ucfimg=1&w=159&h=159&c=7&dpr=1.3&o=7&rm=3" 
+             alt="Sri Aditya Logo" 
+             class="logo-img">
+        <div class="logo-text">Sri Aditya Degree College</div>
+      </div>
+      <ul class="nav-links">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#courses">Courses</a></li>
+        <li><a href="#facilities">Facilities</a></li>
+        <li><a href="#gallery">Gallery</a></li>
+        <li><a href="#enquiry">Enquiry</a></li>
+        <li><a href="#contact" class="cta-nav">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero" id="home">
+    <div class="hero-container">
+      <div class="hero-badge">🎓 Eluru One Town Campus</div>
+      <h1>Future-Ready Education</h1>
+      <p class="hero-subtitle">Premium degree programs in AI, Data Science, Computer Applications & Digital Marketing with 100% placement support</p>
+      <div class="hero-stats">
+        <div class="stat"><div class="stat-number">7</div><div>UG Courses</div></div>
+        <div class="stat"><div class="stat-number">150+</div><div>Students</div></div>
+        <div class="stat"><div class="stat-number">100%</div><div>Placement Assist</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Courses -->
+  <section class="section" id="courses">
+    <div class="container">
+      <h2>Academic Courses</h2>
+      <div class="grid">
+        <div class="card"><div class="card-icon">🤖</div><h3>B.Sc AI & Robotics</h3><p>Advanced Machine Learning, Robotics, Python programming, AI systems & industry projects.</p></div>
+        <div class="card"><div class="card-icon">💻</div><h3>B.Sc Computer Science</h3><p>Full-stack development, cloud computing, data science & software engineering.</p></div>
+        <div class="card"><div class="card-icon">📊</div><h3>B.Sc Data Science</h3><p>Big data analytics, ML algorithms, visualization & business intelligence.</p></div>
+        <div class="card"><div class="card-icon">💾</div><h3>BCA Data Science</h3><p>Enterprise data solutions, database management & analytics platforms.</p></div>
+        <div class="card"><div class="card-icon">💼</div><h3>BCA</h3><p>Complete software development, app development & IT management.</p></div>
+        <div class="card"><div class="card-icon">📈</div><h3>BBA Digital Marketing</h3><p>SEO, social media marketing, analytics, e-commerce & digital strategy.</p></div>
+        <div class="card"><div class="card-icon">💻</div><h3>B.Com Computer Applications</h3><p>Accounting software, Tally, GST, ERP systems & financial technology.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Facilities -->
+  <section class="section" id="facilities" style="background: var(--gray-100);">
+    <div class="container">
+      <h2>Campus Facilities</h2>
+      <div class="grid">
+        <div class="card"><div class="card-icon">💻</div><h3>Advanced Computer Labs</h3><p>Latest i7 systems, high-speed internet, dedicated AI/ML servers & software licenses.</p></div>
+        <div class="card"><div class="card-icon">📚</div><h3>Digital Library</h3><p>25,000+ books, e-resources, research databases & collaborative study spaces.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Gallery -->
+  <section class="section" id="gallery">
+    <div class="container">
+      <h2>Campus Gallery</h2>
+      <div class="gallery-grid">
+        <div class="gallery-item">
+          <img src="C:\Users\saiki\OneDrive\Desktop\clg.jpg" alt="Modern Main Building"/>
+          <div class="gallery-overlay"><div>Modern Main Building</div></div>
+        </div>
+        <div class="gallery-item">
+          <img src="C:\Users\saiki\OneDrive\Desktop\lab.jpg" alt="Advanced Computer Lab"/>
+          <div class="gallery-overlay"><div>Advanced Computer Lab</div></div>
+        </div>
+        <div class="gallery-item">
+          <img src="C:\Users\saiki\OneDrive\Desktop\li.jpg" alt="Library"/>
+          <div class="gallery-overlay"><div>Library</div></div>
+        </div>
+        <div class="gallery-item">
+          <img src="C:\Users\saiki\OneDrive\Desktop\class.jpg" alt="Classes"/>
+          <div class="gallery-overlay"><div>Classes</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Enquiry Form -->
+  <section class="section" id="enquiry" style="background: var(--gray-100);">
+    <div class="container">
+      <div class="form-container" id="formContainer">
+        <h2 style="text-align: center; margin-bottom: 2rem; color: var(--gray-800);">Admission Enquiry</h2>
+        
+        <!-- SUCCESS MESSAGE -->
+        <div class="success-message" id="successMessage">
+          <div class="success-icon">✅</div>
+          <h2 style="font-size: 2rem; font-weight: 800; margin-bottom: 1rem;">Thank You!</h2>
+          <p style="font-size: 1.2rem; margin-bottom: 2rem;">Your admission enquiry has been successfully submitted. Our team will contact you within 24 hours.</p>
+          <div class="success-details" id="successDetails"></div>
+          <button onclick="resetForm()" class="btn btn-success" style="margin-top: 1.5rem;">📝 New Enquiry</button>
+        </div>
+
+        <!-- FORM -->
+        <form id="enquiryForm" novalidate>
+          <div class="form-row">
+            <div class="form-group">
+              <label>👤 Student Name *</label>
+              <input type="text" name="studentName" required minlength="2">
+              <div class="error-message" data-error="studentName">Please enter valid name</div>
+            </div>
+            <div class="form-group">
+              <label>👤 Father's Name *</label>
+              <input type="text" name="fatherName" required minlength="2">
+              <div class="error-message" data-error="fatherName">Please enter valid name</div>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label>📧 Email *</label>
+              <input type="email" name="email" required>
+              <div class="error-message" data-error="email">Please enter valid email</div>
+            </div>
+            <div class="form-group">
+              <label>📱 Mobile Number *</label>
+              <input type="tel" name="phone" required pattern="[6-9][0-9]{9}">
+              <div class="error-message" data-error="phone">Enter 10-digit number starting with 6-9</div>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label>🏠 Address *</label>
+              <input type="text" name="address" required>
+              <div class="error-message" data-error="address">Please enter address</div>
+            </div>
+            <div class="form-group">
+              <label>📅 Join Date *</label>
+              <input type="date" name="joinDate" required>
+              <div class="error-message" data-error="joinDate">Please select date</div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>🎯 Course *</label>
+            <select name="course" required>
+              <option value="">Select Course</option>
+              <option value="B.Sc AI & Robotics">🤖 B.Sc AI & Robotics</option>
+              <option value="B.Sc Computer Science">💻 B.Sc Computer Science</option>
+              <option value="B.Sc Data Science">📊 B.Sc Data Science</option>
+              <option value="BCA Data Science">💾 BCA Data Science</option>
+              <option value="BCA">💼 BCA</option>
+              <option value="BBA Digital Marketing">📈 BBA Digital Marketing</option>
+              <option value="B.Com Computer Applications">💻 B.Com Computer Applications</option>
+            </select>
+            <div class="error-message" data-error="course">Please select a course</div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label>💬 Query</label>
+              <textarea name="message" rows="3" placeholder="Fees, scholarships..."></textarea>
+            </div>
+            <div class="form-group">
+              <label>👥 Referred By</label>
+              <input type="text" name="referredBy" placeholder="Teacher/Student name">
+            </div>
+          </div>
+          <div class="form-row">
+            <button type="submit" class="btn btn-primary" id="submitBtn">🚀 Submit Enquiry</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section class="section" id="contact">
+    <div class="container">
+      <h2>Contact Information</h2>
+      <div class="contact-grid">
+        <div class="contact-card">
+          <div style="font-size: 2rem; margin-bottom: 1rem;">📞</div>
+          <h3>Admission Cell</h3>
+          <p>+91 73372 76664, +91 87908 11663</p>
+          <p>Sadcelr@aditya.ac.in</p>
+        </div>
+        <div class="contact-card">
+          <div style="font-size: 2rem; margin-bottom: 1rem;">📍</div>
+          <h3>Address</h3>
+          <p>Sri Aditya Degree College<br>Eluru One Town<br>Eluru District, AP - 534001</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    // Smooth scrolling
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
+      });
+    });
+
+    const form = document.getElementById('enquiryForm');
+    const submitBtn = document.getElementById('submitBtn');
+    const formContainer = document.getElementById('formContainer');
+    const successMessage = document.getElementById('successMessage');
+    const successDetails = document.getElementById('successDetails');
+
+    // 🔒 FORM VALIDATION - Real-time checking
+    form.addEventListener('input', checkFormValidity);
+    form.addEventListener('change', checkFormValidity);
+
+    function checkFormValidity() {
+      const formData = new FormData(form);
+      const data = Object.fromEntries(formData);
+      
+      const isValid = data.studentName && 
+                     data.fatherName && 
+                     data.email && 
+                     data.phone && 
+                     data.address && 
+                     data.joinDate && 
+                     data.course;
+      
+      submitBtn.disabled = !isValid;
+    }
+
+    // ✅ MAIN FORM SUBMISSION - SAME PAGE SUCCESS
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      
+      const formData = new FormData(form);
+      const data = Object.fromEntries(formData);
+      
+      if (!isFormValid(data)) {
+        showValidationErrors();
+        return;
+      }
+
+      const originalSubmit = submitBtn.innerHTML;
+      submitBtn.innerHTML = '⏳ Saving...';
+      submitBtn.disabled = true;
+
+      try {
+        // 📊 Save to Google Sheets
+        const sheetResponse = await fetch('https://script.google.com/macros/s/AKfycbwTJn0zaSo2uh_J-zXYODST5cgb8cBldcZYeyBrr4m37yQQkdK1fx-SbovNx2ODYvDnbg/exec', {
+          method: 'POST',
+          body: formData
+        });
+
+        if (sheetResponse.ok) {
+          console.log('✅ Google Sheets saved successfully');
+          
+          // 🎉 Show success on SAME PAGE (NO NEW WINDOW)
+          showSuccessOnPage(data);
+          
+        } else {
+          throw new Error('Google Sheets save failed');
+        }
+      } catch (error) {
+        console.error('❌ Error:', error);
+        alert('⚠️ Submission failed! Please try again.');
+        submitBtn.innerHTML = originalSubmit;
+        submitBtn.disabled = false;
+      }
+    });
+
+    // 🎉 SUCCESS ON SAME PAGE
+    function showSuccessOnPage(data) {
+      // Hide form, show success
+      formContainer.classList.add('form-success');
+      
+      // Fill success details
+      successDetails.innerHTML = `
+        <div class="detail-row"><span>👤 Student:</span><span>${data.studentName}</span></div>
+        <div class="detail-row"><span>📱 Mobile:</span><span>${data.phone}</span></div>
+        <div class="detail-row"><span>📧 Email:</span><span>${data.email}</span></div>
+        <div class="detail-row"><span>🎯 Course:</span><span>${data.course}</span></div>
+        <div class="detail-row"><span>📅 Join Date:</span><span>${new Date(data.joinDate).toLocaleDateString('en-IN')}</span></div>
+        ${data.message ? `<div class="detail-row"><span>💬 Query:</span><span>${data.message}</span></div>` : ''}
+      `;
+      
+      // Scroll to success message
+      successMessage.scrollIntoView({ behavior: 'smooth' });
+    }
+
+    // 🔄 RESET FORM
+    function resetForm() {
+      formContainer.classList.remove('form-success');
+      form.reset();
+      checkFormValidity();
+      submitBtn.innerHTML = '🚀 Submit Enquiry';
+    }
+
+    // 🔍 Validate form data
+    function isFormValid(data) {
+      return data.studentName && data.studentName.length >= 2 &&
+             data.fatherName && data.fatherName.length >= 2 &&
+             data.email && /\S+@\S+\.\S+/.test(data.email) &&
+             data.phone && /^[6-9][0-9]{9}$/.test(data.phone.replace(/[^0-9]/g, '')) &&
+             data.address && data.address.length >= 5 &&
+             data.joinDate &&
+             data.course;
+    }
+
+    // ❌ Show validation errors
+    function showValidationErrors() {
+      const errors = document.querySelectorAll('.error-message');
+      errors.forEach(error => {
+        const fieldName = error.dataset.error;
+        const field = form.elements[fieldName];
+        if (field && !field.validity.valid) {
+          error.style.display = 'block';
+          field.style.borderColor = '#ef4444';
+        } else {
+          error.style.display = 'none';
+        }
+      });
+    }
+
+    // Initial validation check
+    checkFormValidity();
+  </script>
+</body>
+</html>
